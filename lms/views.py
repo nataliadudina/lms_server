@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, generics
 
 from lms.models import Course, Lesson
@@ -9,13 +10,23 @@ class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
 
 
-class LessonCreateApiView(generics.CreateAPIView):
+class LessonApiList(generics.ListCreateAPIView):
     serializer_class = LessonSerializer
 
+    def get_queryset(self):
+        course_id = self.kwargs['pk']
+        course = get_object_or_404(Course, pk=course_id)
+        queryset = Lesson.objects.filter(course=course)
+        return queryset
 
-class LessonListApiView(generics.ListAPIView):
-    serializer_class = LessonSerializer
-    queryset = Lesson.objects.all()
+
+# class LessonCreateApiView(generics.CreateAPIView):
+#     serializer_class = LessonSerializer
+#
+#
+# class LessonListApiView(generics.ListAPIView):
+#     serializer_class = LessonSerializer
+#     queryset = Lesson.objects.all()
 
 
 class LessonDetailApiView(generics.RetrieveAPIView):
@@ -30,3 +41,4 @@ class LessonUpdateApiView(generics.UpdateAPIView):
 
 class LessonDestroyApiView(generics.DestroyAPIView):
     serializer_class = LessonSerializer
+

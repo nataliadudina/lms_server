@@ -1,0 +1,32 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "email": "hindu@gmail.com",
+      "avatar": null,
+      "phone": "+91 158 786 4274",
+      "country": "India"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "email": "amigo@gmail.com",
+      "avatar": null,
+      "phone": "+34 91993 1435",
+      "country": "Spain"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "email": "arab@gmail.com",
+      "avatar": null,
+      "phone": "+20 12 7632 0175",
+      "country": "Egypt"
+    }
+  }
+]

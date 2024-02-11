@@ -1,0 +1,112 @@
+[
+  {
+    "model": "lms.lesson",
+    "pk": 1,
+    "fields": {
+      "name": "Lesson 1: Real Estate Market Overview in Dubai",
+      "description": "This lesson provides an in-depth understanding of the historical development, industry dynamics, key market actors, and regulatory aspects of Dubai's real estate market. Students will gain insights into the unique characteristics and factors influencing the real estate sector in Dubai.",
+      "preview": null,
+      "video": null,
+      "course": 1
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 2,
+    "fields": {
+      "name": "Lesson 2: Professional Communication and Vocabulary for Real Estate",
+      "description": " In this lesson, students will focus on developing effective communication skills and mastering industry-specific vocabulary essential for real estate careers in Dubai. Emphasis will be placed on conversational techniques, jargon, and terminology used in property sales, leasing, and procurement processes.",
+      "preview": null,
+      "video": null,
+      "course": 1
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 3,
+    "fields": {
+      "name": "Lesson 3: Legal Aspects and Agreements in Dubai's Real Estate",
+      "description": "This lesson covers the legal framework, sales agreements, property leasing, and rental regulations specific to Dubai's real estate market. Students will gain knowledge of the legal processes and requirements essential for conducting real estate transactions in compliance with Dubai's regulations.",
+      "preview": null,
+      "video": null,
+      "course": 1
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 4,
+    "fields": {
+      "name": "Lesson 4: Becoming a Certified Real Estate Broker in Dubai",
+      "description": "Students will explore the steps and requirements to become a certified real estate broker in Dubai, including the licensing process, educational qualifications, and mentorship opportunities. This lesson aims to provide a clear roadmap for individuals aspiring to pursue a successful career as a real estate broker in Dubai.",
+      "preview": null,
+      "video": null,
+      "course": 1
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 5,
+    "fields": {
+      "name": "Lesson 5: Building a Successful Real Estate Career in Dubai",
+      "description": "This lesson focuses on essential factors for building a successful and lucrative real estate career in Dubai. Topics include networking, business planning, market knowledge, and the skills required to thrive in the dynamic and rapidly expanding real estate industry of Dubai.",
+      "preview": null,
+      "video": null,
+      "course": 1
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 6,
+    "fields": {
+      "name": "Lesson 1: Understanding Your Why",
+      "description": "In this lesson, you will explore the reasons why you want to learn English and how it aligns with your personal and professional goals. Understanding your motivation is the first step to a successful learning journey.",
+      "preview": null,
+      "video": null,
+      "course": 2
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 7,
+    "fields": {
+      "name": "Lesson 2: Overcoming Challenges and Staying Positive",
+      "description": "This lesson focuses on identifying and overcoming challenges in learning English. You will learn strategies to stay positive, overcome self-doubt, and maintain a resilient mindset throughout your learning process.",
+      "preview": null,
+      "video": null,
+      "course": 2
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 8,
+    "fields": {
+      "name": "Lesson 3: Setting Clear Language Learning Goals",
+      "description": " In this lesson, you will learn the importance of setting specific, measurable, achievable, relevant, and time-bound (SMART) goals for your English learning. Clear goals provide direction and motivation for your language learning journey.",
+      "preview": null,
+      "video": null,
+      "course": 2
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 9,
+    "fields": {
+      "name": "Lesson 4: Finding Inspiration in Language Learning",
+      "description": "This lesson explores various sources of inspiration for language learning, such as success stories, cultural connections, and personal interests. Finding inspiration can fuel your motivation and make the learning process more enjoyable.",
+      "preview": null,
+      "video": null,
+      "course": 2
+    }
+  },
+  {
+    "model": "lms.lesson",
+    "pk": 10,
+    "fields": {
+      "name": "Lesson 5: Building Consistent Learning Habits",
+      "description": "In the final lesson, you will discover effective strategies for building consistent learning habits. Consistency is key to language acquisition, and this lesson will provide practical tips for integrating English learning into your daily routine.",
+      "preview": null,
+      "video": null,
+      "course": 2
+    }
+  }
+]

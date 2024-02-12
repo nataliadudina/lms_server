@@ -19,6 +19,11 @@ class LessonApiList(generics.ListCreateAPIView):
         queryset = Lesson.objects.filter(course=course)
         return queryset
 
+    def perform_create(self, serializer):
+        course_id = self.kwargs['pk']
+        course = get_object_or_404(Course, pk=course_id)
+        serializer.save(course=course)
+
 
 # class LessonCreateApiView(generics.CreateAPIView):
 #     serializer_class = LessonSerializer
@@ -41,4 +46,6 @@ class LessonUpdateApiView(generics.UpdateAPIView):
 
 class LessonDestroyApiView(generics.DestroyAPIView):
     serializer_class = LessonSerializer
+    queryset = Lesson.objects.all()
+
 

@@ -4,10 +4,19 @@ from users.models import User, Payment
 
 
 class PaymentSerializer(serializers.ModelSerializer):
+    # выводит строку вместо id
+    user = serializers.SlugRelatedField(slug_field="email", read_only=True)
+    lesson = serializers.SlugRelatedField(slug_field="name", read_only=True)
+    course = serializers.SlugRelatedField(slug_field="name", read_only=True)
 
     class Meta:
         model = Payment
         fields = ('user', 'date', 'amount', 'method', 'course', 'lesson')
+
+
+class PaymentDetailsSerializer(serializers.ModelSerializer):
+
+    pass
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -15,4 +24,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'email', 'phone', 'country', 'payments')
+        fields = '__all__'

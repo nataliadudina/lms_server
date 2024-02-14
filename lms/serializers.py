@@ -4,6 +4,7 @@ from lms.models import Course, Lesson
 
 
 class LessonSerializer(serializers.ModelSerializer):
+    course = serializers.StringRelatedField(read_only=True)
 
     class Meta:
         model = Lesson

@@ -13,6 +13,7 @@ class LessonSerializer(serializers.ModelSerializer):
             'description',
             'preview',
             'video',
+            'course'
         )
 
 

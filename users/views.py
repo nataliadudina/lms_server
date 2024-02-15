@@ -17,6 +17,13 @@ class UserViewSet(viewsets.ModelViewSet):
             user.set_password(password)
             user.save()
 
+    def perform_update(self, serializer):
+        user = serializer.save()
+        password = self.request.data.get('password')
+        if password:
+            user.set_password(password)
+            user.save()
+
 
 class PaymentListView(generics.ListAPIView):
     serializer_class = PaymentSerializer
@@ -24,6 +31,11 @@ class PaymentListView(generics.ListAPIView):
     filterset_fields = ('course', 'lesson', 'method')  # Набор полей для фильтрации
     ordering_fields = ('date',)
     queryset = Payment.objects.all()
+    # permission_classes = [IsAuthenticated]
+    # lookup_field = 'username'  # Поле, которое будет использоваться для поиска пользователя
+    #
+    # def get_queryset(self):
+    #     return User.objects.filter(username=self.request.user.username)
 
 
 class UserPaymentsView(generics.RetrieveAPIView):

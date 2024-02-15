@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, generics
+from rest_framework.permissions import IsAuthenticated
 
 from lms.models import Course, Lesson
 from lms.serializers import CourseSerializer, LessonSerializer
@@ -8,30 +9,12 @@ from lms.serializers import CourseSerializer, LessonSerializer
 class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
+    permission_classes = [IsAuthenticated]
 
 
 class LessonApiList(generics.ListCreateAPIView):
     serializer_class = LessonSerializer
-
-    def get_queryset(self):
-        course_id = self.kwargs['pk']
-        course = get_object_or_404(Course, pk=course_id)
-        queryset = Lesson.objects.filter(course=course)
-        return queryset
-
-    def perform_create(self, serializer):
-        course_id = self.kwargs['pk']
-        course = get_object_or_404(Course, pk=course_id)
-        serializer.save(course=course)
-
-
-# class LessonCreateApiView(generics.CreateAPIView):
-#     serializer_class = LessonSerializer
-#
-#
-# class LessonListApiView(generics.ListAPIView):
-#     serializer_class = LessonSerializer
-#     queryset = Lesson.objects.all()
+    queryset = Lesson.objects.all()
 
 
 class LessonDetailApiView(generics.RetrieveAPIView):
@@ -48,3 +31,11 @@ class LessonDestroyApiView(generics.DestroyAPIView):
     queryset = Lesson.objects.all()
 
 
+
+# class LessonCreateApiView(generics.CreateAPIView):
+#     serializer_class = LessonSerializer
+#
+#
+# class LessonListApiView(generics.ListAPIView):
+#     serializer_class = LessonSerializer
+#     queryset = Lesson.objects.all()

@@ -1,4 +1,3 @@
-from rest_framework import serializers
 from django.db import models
 
 
@@ -12,6 +11,7 @@ class Course(models.Model):
     name = models.CharField(max_length=100, verbose_name='Course')
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to=course_upload_to, null=True, blank=True)
+    # author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

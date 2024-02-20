@@ -3,7 +3,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from .apps import UsersConfig
 from .views import PaymentListView, UserApiList, UserDetailApiList, \
-    UserUpdateApiList, UserDestroyApiView, UserRegistrationAPIView
+    UserUpdateApiList, UserDestroyApiView, UserRegistrationAPIView, SubscriptionAPIView
 
 app_name = UsersConfig.name
 
@@ -18,4 +18,7 @@ urlpatterns = [
 
     # payments
     path('users/payments/', PaymentListView.as_view(), name='payments-history'),
+
+    # subscriptions
+    path('users/<int:pk>/subscriptions/', SubscriptionAPIView.as_view(), name='subscriptions'),  # method POST
 ]

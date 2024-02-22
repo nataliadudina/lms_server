@@ -43,4 +43,3 @@ class Lesson(models.Model):
     class Meta:
         verbose_name = 'lesson'
         verbose_name_plural = 'lessons'
-

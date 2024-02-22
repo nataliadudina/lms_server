@@ -2,6 +2,7 @@ from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated
 
 from lms.models import Course, Lesson
+from lms.paginators import CoursePaginator, LessonPaginator
 from lms.serializers import CourseSerializer, LessonSerializer, LessonDetailSerializer
 from lms.permissions import IsModerator, IsProductAuthor
 
@@ -9,6 +10,7 @@ from lms.permissions import IsModerator, IsProductAuthor
 class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
+    pagination_class = CoursePaginator
     permission_classes_by_action = {
         'create': [IsAuthenticated, IsModerator],
         'update': [IsAuthenticated, IsProductAuthor | IsModerator],
@@ -30,6 +32,7 @@ class CourseViewSet(viewsets.ModelViewSet):
 class LessonApiList(generics.ListCreateAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
+    pagination_class = LessonPaginator
     permission_classes = [IsAuthenticated, IsModerator]
 
 

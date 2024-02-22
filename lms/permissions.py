@@ -19,7 +19,7 @@ class IsModerator(permissions.BasePermission):
         """
         Проверка, является ли пользователь модератором. Модераторы не могут создавать и удалять продукты.
         """
-        if request.method in ['GET', 'PUT', 'PATCH']:
+        if request.method in ['PUT', 'PATCH']:
             return request.user.groups.filter(name='moderators').exists()
         return request.user.is_authenticated and not request.user.groups.filter(name='moderators').exists()
 

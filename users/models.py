@@ -19,6 +19,9 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
+    def __str__(self):
+        return self.email
+
 
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='payments')
@@ -48,6 +51,9 @@ class Payment(models.Model):
 class Subscription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='subscriptions')
     course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, blank=True, related_name='subscribers')
+
+    def __str__(self):
+        return f"{self.user}'s subscription to {self.course.name}"
 
     class Meta:
         unique_together = ('user', 'course')

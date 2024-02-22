@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from lms.models import Course
+from lms.paginators import PaymentsPaginator
 from users.models import Payment, Subscription
 from lms.permissions import IsOwnerOrReadOnly, IsModerator
 from users.serializers import UserSerializer, PaymentSerializer, UserProfileSerializer
@@ -69,6 +70,7 @@ class PaymentListView(generics.ListAPIView):
     filterset_fields = ('course', 'lesson', 'method')  # Набор полей для фильтрации
     ordering_fields = ('date',)
     queryset = Payment.objects.all()
+    pagination_class = PaymentsPaginator
     permission_classes = [IsAuthenticated | IsModerator]
 
     def get_queryset(self):
@@ -80,13 +82,16 @@ class PaymentListView(generics.ListAPIView):
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
-        serializer = self.get_serializer(queryset, many=True)
-        if not queryset.exists():
+        paginator = self.pagination_class()
+        paginated_queryset = paginator.paginate_queryset(queryset, request)
+        serializer = self.get_serializer(paginated_queryset, many=True)
+        if not paginated_queryset:
             return Response({'message': 'No payments to display.'}, status=200)
-        return Response(serializer.data)
+        return paginator.get_paginated_response(serializer.data)
 
 
 class SubscriptionAPIView(APIView):
+
     def post(self, request, *args, **kwargs):
         user = request.user
         course_id = request.data.get('course_id')

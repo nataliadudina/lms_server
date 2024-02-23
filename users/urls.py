@@ -20,5 +20,5 @@ urlpatterns = [
     path('users/payments/', PaymentListView.as_view(), name='payments-history'),
 
     # subscriptions
-    path('users/<int:pk>/subscriptions/', SubscriptionAPIView.as_view(), name='subscriptions'),  # method POST
+    path('users/subscriptions/', SubscriptionAPIView.as_view(), name='subscriptions'),  # method POST
 ]

@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from rest_framework import serializers, request
 
 from lms.models import Course, Lesson
 from lms.validators import validate_video_url
@@ -52,6 +52,7 @@ class CourseSerializer(serializers.ModelSerializer):
     number_of_lessons = serializers.SerializerMethodField()
     lessons = SimpleLessonSerializer(source='lesson', many=True, read_only=True)
     author = serializers.ReadOnlyField(source='author.email')
+    subscription = serializers.SerializerMethodField()
 
     class Meta:
         model = Course
@@ -61,7 +62,8 @@ class CourseSerializer(serializers.ModelSerializer):
             'image',
             'number_of_lessons',
             'lessons',
-            'author'
+            'author',
+            'subscription'
         )
 
     def get_number_of_lessons(self, instance):
@@ -71,3 +73,8 @@ class CourseSerializer(serializers.ModelSerializer):
         # При создании нового курса устанавливает текущего пользователя в качестве автора
         validated_data['author'] = self.context['request'].user
         return super().create(validated_data)
+
+    def get_subscription(self, instance):
+        user = self.context['request'].user   # Получает текущего пользователя
+        is_subscribed = instance.subscribers.filter(user=user).exists()    # Проверяет, подписан ли пользователь на курс
+        return is_subscribed

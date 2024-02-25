@@ -41,8 +41,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
         subscription_list = []
         for subscription in subscriptions:
             subscription_info = {
-                'course_name': subscription.course.name,
-                'is_subscribed': True
+                'course_name': subscription.course.name
             }
             subscription_list.append(subscription_info)
         return subscription_list

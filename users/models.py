@@ -1,6 +1,5 @@
 from decimal import Decimal
 
-from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from lms.models import Course, Lesson
@@ -25,7 +24,7 @@ class User(AbstractUser):
 
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='payments')
-    date = models.DateTimeField(null=True, blank=True, verbose_name='Payment date')
+    date = models.DateTimeField(auto_now_add=True, verbose_name='Payment date')
     course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, blank=True, related_name='payments',
                                verbose_name='Paid course')
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, null=True, blank=True, related_name='payments',
@@ -38,6 +37,8 @@ class Payment(models.Model):
         ('transfer', 'Bank transfer'),
     ]
     method = models.CharField(max_length=10, choices=PAYMENT_METHOD_CHOICES, verbose_name='Payment method')
+    session_id = models.CharField(max_length=100, blank=True, null=True)
+    status = models.CharField(max_length=20, blank=True, null=True)
 
     def __str__(self):
         course_or_lesson = self.course.name if self.course else self.lesson.name if self.lesson else "N/A"

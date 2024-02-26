@@ -128,12 +128,10 @@ class CreatePaymentView(APIView):
             course=course,
             amount=course.price,
             method='transfer',
-            session_id=session.id
+            session_id=session.id,
+            payment_link=session.url,
+            stripe_product_id=product.id
         )
-
-        # Сохраняет ссылку на оплату
-        payment.session_id = session.id
-        payment.save()
 
         # Возвращает ссылку на оплату
         return Response({'payment_url': session.url}, status=status.HTTP_201_CREATED)
@@ -145,6 +143,7 @@ class PaymentStatusView(View):
         Ожидает параметр 'session_id' в GET-запросе, использует его для получения информации о сессии оплаты из Stripe
         и обновления статуса платежа в базе данных.
         """
+
     def get(self, request, *args, **kwargs):
         # Получаем ID сессии из параметров запроса
         session_id = request.GET.get('session_id')

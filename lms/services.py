@@ -35,7 +35,7 @@ def create_stripe_checkout_session(price_id, user_email):
             }],
             mode='payment',
             success_url='http://127.0.0.1:8000/payment-status/?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url='http://127.0.0.1:8000/cancel',
+            cancel_url='http://127.0.0.1:8000/',
             customer_email=user_email,
         )
         return session

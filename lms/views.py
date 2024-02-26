@@ -5,6 +5,7 @@ from lms.models import Course, Lesson
 from lms.paginators import CoursePaginator, LessonPaginator
 from lms.serializers import CourseSerializer, LessonSerializer, LessonDetailSerializer
 from lms.permissions import IsModerator, IsProductAuthor
+from lms.tasks import send_notification
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -27,6 +28,11 @@ class CourseViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+    def perform_update(self, serializer):
+        course_updated = serializer.save(author=self.request.user)
+        if course_updated:
+            send_notification.delay(course_updated.pk)
 
 
 class LessonApiList(generics.ListCreateAPIView):

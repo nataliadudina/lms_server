@@ -39,6 +39,8 @@ class Payment(models.Model):
     method = models.CharField(max_length=10, choices=PAYMENT_METHOD_CHOICES, verbose_name='Payment method')
     session_id = models.CharField(max_length=100, blank=True, null=True)
     status = models.CharField(max_length=20, blank=True, null=True)
+    payment_link = models.URLField(max_length=400, blank=True, null=True, verbose_name='Payment link')
+    stripe_product_id = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         course_or_lesson = self.course.name if self.course else self.lesson.name if self.lesson else "N/A"

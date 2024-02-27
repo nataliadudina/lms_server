@@ -13,6 +13,8 @@ from datetime import timedelta
 from pathlib import Path
 
 import os
+
+from celery.schedules import crontab
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -48,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'rest_framework_simplejwt',
+    'django_celery_beat',
 
     'lms',
     'users',
@@ -120,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -151,7 +154,6 @@ EMAIL_USE_SSL = bool(os.getenv('EMAIL_USE_SSL'))
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
-
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -191,5 +193,13 @@ if CACHE_ENABLED:
         }
     }
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+CELERY_BEAT_SCHEDULE = {
+    'check_user_last_login': {
+        'task': 'lms.tasks.check_user_last_login',
+        'schedule': crontab(hour='0', minute='0'),  # Запускать каждый день в полночь
+        'options': {'timezone': 'Europe/Moscow'},
+    },
+}

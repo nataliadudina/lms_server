@@ -41,6 +41,11 @@ class LessonApiList(generics.ListCreateAPIView):
     pagination_class = LessonPaginator
     permission_classes = [IsAuthenticated, IsModerator]
 
+    def perform_create(self, serializer):
+        lesson = serializer.save()
+        # После обновления урока отправляем уведомление подписчикам
+        send_notification.delay(lesson.course_id)
+
 
 class LessonDetailApiView(generics.RetrieveAPIView):
     serializer_class = LessonDetailSerializer
@@ -52,6 +57,11 @@ class LessonUpdateApiView(generics.UpdateAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
     permission_classes = [IsAuthenticated, IsProductAuthor | IsModerator]
+
+    def perform_update(self, serializer):
+        lesson = serializer.save()
+        # После обновления урока отправляем уведомление подписчикам
+        send_notification.delay(lesson.course_id)
 
 
 class LessonDestroyApiView(generics.DestroyAPIView):

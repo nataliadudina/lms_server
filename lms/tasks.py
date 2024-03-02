@@ -1,13 +1,11 @@
-from datetime import timedelta
-
 from celery import shared_task
-from django.contrib.auth import get_user_model
+from dateutil.relativedelta import relativedelta
 from django.core.mail import send_mail
 from django.utils import timezone
 
 from config import settings
 from lms.models import Course
-from users.models import Subscription
+from users.models import Subscription, User
 
 
 @shared_task
@@ -38,9 +36,7 @@ def send_notification(course_id):
 
 def check_user_last_login():
     """Блокирование пользователей, которые не заходили на сайт больше месяца"""
-    users = get_user_model().objects.all()
+    now = timezone.now()
+    month_ago = now - relativedelta(months=1)
 
-    for user in users:
-        if timezone.now() - user.last_login > timedelta(days=31):
-            user.is_active = False
-            user.save()
+    User.objects.filter(is_active=True, last_login__lte=month_ago).update(is_active=False)

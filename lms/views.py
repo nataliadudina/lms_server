@@ -43,7 +43,7 @@ class LessonApiList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         lesson = serializer.save()
-        # После обновления урока отправляем уведомление подписчикам
+        # После добавления урока отправляем уведомление подписчикам
         send_notification.delay(lesson.course_id)
 
 

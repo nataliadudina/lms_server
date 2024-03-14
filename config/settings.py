@@ -94,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DATABASE_NAME'),
         'USER': os.getenv('DATABASE_USER'),
-        'HOST': os.getenv('DATABASE_HOST'),
+        'HOST': os.getenv('DATABASE_HOST', 'db'),
         'PORT': 5432,
         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
     }
@@ -193,8 +193,8 @@ if CACHE_ENABLED:
         }
     }
 
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 
 CELERY_BEAT_SCHEDULE = {
     'check_user_last_login': {

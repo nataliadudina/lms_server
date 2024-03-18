@@ -1,0 +1,29 @@
+[
+  {
+    "model": "lms.course",
+    "pk": 1,
+    "fields": {
+      "name": "English Mastery for Real Estate Careers in Dubai",
+      "description": "This course is tailored for foreign students who want to gain a competitive edge in their real estate careers in Dubai by improving their English proficiency. It offers both face-to-face and online options to enhance students' listening, speaking, reading, and writing skills in real estate contexts.",
+      "image": null
+    }
+  },
+  {
+    "model": "lms.course",
+    "pk": 2,
+    "fields": {
+      "name": "Inspiration and Motivation for Learning English: How to Start and Keep Going",
+      "description": "This course provides practical tips and strategies to inspire and motivate learners of English to start and continue their learning journey. It emphasizes the importance of communication with native speakers, exposure to authentic materials, and goal setting to achieve mastery of English.",
+      "image": null
+    }
+  },
+  {
+    "model": "lms.course",
+    "pk": 3,
+    "fields": {
+      "name": "English for Specific Purposes: Business, Tourism, and Academic English",
+      "description": "This course is designed for those who want to master English for specific purposes, such as business, tourism, or academic contexts. It focuses on developing professional vocabulary, communicative strategies, and cultural awareness to succeed in international environments.",
+      "image": null
+    }
+  }
+]

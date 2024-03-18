@@ -1,0 +1,126 @@
+[
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$IyJX50ehkcDjWAHjHwjxap$PQ7AXhIAyRVPcqRFVTtZFYLGN5zlN3TYdkGqY1ooPuk=",
+    "last_login": "2024-02-16T11:59:09Z",
+    "is_superuser": true,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-02-15T13:49:56Z",
+    "email": "admin@sky.pro",
+    "avatar": "",
+    "phone": null,
+    "country": "Russia",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$8Vi68bmtriiIjBJqTN3NgC$iHLAIZPhAUqnAO4ynPHaRJp5HOhWyAyk9l8ILiFovYk=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Ankit",
+    "last_name": "Kumar",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-02-15T14:04:30Z",
+    "email": "hindu@gmail.com",
+    "avatar": "",
+    "phone": "+91 158 786 4274",
+    "country": "India",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$0xQF22aQJw4Ql76nrXJBcE$igHiBDSkI5ffOkfz+cNDmwyUuzgKxmXLUZPdoLvBMfA=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Juan",
+    "last_name": "Garcia",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-02-15T14:07:44Z",
+    "email": "amigo@gmail.com",
+    "avatar": "",
+    "phone": "+34 91993 1435",
+    "country": "Spain",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$8SvpSWg9tRWXwL9joT8ghS$dMcE+mNk4al3GI3zyX0ZLFqCivo43fUVNANmKPMWJxo=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Mohamed",
+    "last_name": "Ahmed Hussain",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-02-15T14:07:44Z",
+    "email": "arab@gmail.com",
+    "avatar": "",
+    "phone": "+20 12 7632 0175",
+    "country": "Egypt",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 15,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$sjG0v8O9M7FMlaOwfaWl0p$y/9xm1X86OT7MWrS9bgOxBLGrMDZGD+0IafEaAk+y5s=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-02-17T12:44:31Z",
+    "email": "moder@gmail.com",
+    "avatar": "",
+    "phone": null,
+    "country": "England",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 16,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$moCIQhxLaMrwHowCBHU3jv$/ZirOFrw9zjaeRdUxDulH79JxTtMJwFG+iO6Cp9emd4=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-02-17T12:54:00.244Z",
+    "email": "teacher@mail.ru",
+    "avatar": "",
+    "phone": null,
+    "country": "the USA",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

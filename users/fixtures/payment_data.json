@@ -1,0 +1,38 @@
+[
+  {
+    "model": "users.payment",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "date": "2024-02-01T00:00:00Z",
+      "course": 3,
+      "lesson": null,
+      "amount": "5000.00",
+      "method": "transfer"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "date": "2023-12-10T00:00:00Z",
+      "course": null,
+      "lesson": 6,
+      "amount": "500.00",
+      "method": "transfer"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "date": "2023-10-01T00:00:00Z",
+      "course": 1,
+      "lesson": null,
+      "amount": "7000.00",
+      "method": "transfer"
+    }
+  }
+]

@@ -49,6 +49,7 @@ services:
     command: celery -A config beat -l INFO -S django
     depends_on:
       - redis
+      - app
 
 volumes:
   pgdata:
